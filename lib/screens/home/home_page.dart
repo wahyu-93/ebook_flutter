@@ -5,13 +5,48 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
+  Widget header() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 30),
+      child: Row(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(image: AssetImage('assets/images/profile-pic.png')),
+            ),
+          ),
+          SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Hallo Shanum !', style: semiBoldText16),
+              Text('Good Morning', style: semiBoldText14.copyWith(color: greyColor)),
+            ],
+          ),
+          Spacer(),
+          Image.asset('assets/icons/icon-menu.png', width: 18),
+        ],
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Home Page',
-          style: semiBoldText20,
-        ),
+      backgroundColor: backgroundColor,
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30)),
+            ),
+            child: Column(children: [header()]),
+          ),
+        ],
       ),
     );
   }
