@@ -2,9 +2,17 @@ import 'package:ebook_app/screens/home/components/recent_book.dart';
 import 'package:ebook_app/themes.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+List<String> _categories = ['All Books', 'Comic', 'Novel', 'Manga', 'Fairy Tales', 'Drama', 'Romance', 'Advanture'];
+int _isSelected = 0;
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -77,6 +85,38 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget categories(int index) {
+      // GestureDetector /inkWell
+      // inkWell menyebabkan adanya bayangan ketika diklik
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            _isSelected = index;
+          });
+        },
+        child: Container(
+          margin: EdgeInsets.only(top: 30, right: 12),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+          decoration: BoxDecoration(
+            color: _isSelected == index ? greenColor : transParentColor,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            _categories[index],
+            style: semiBoldText14.copyWith(color: _isSelected == index ? whiteColor : greyColor),
+          ),
+        ),
+      );
+    }
+
+    Widget listCategories() {
+      return SingleChildScrollView(
+        padding: EdgeInsets.only(left: 30),
+        scrollDirection: Axis.horizontal,
+        child: Row(children: _categories.asMap().entries.map((MapEntry map) => categories(map.key)).toList()),
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: ListView(
@@ -103,10 +143,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
+          listCategories(),
         ],
       ),
     );
   }
 }
-
-
