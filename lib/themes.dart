@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 Color backgroundColor = Color(0xFFE5E5E5);
 Color whiteColor = Color(0xFFFFFFFF);
 Color blackColor = Color(0xFF2D2D2D);
@@ -12,6 +11,7 @@ Color greenColor = Color(0xFF098B5C);
 Color greyColorRecentBook = Color(0xFFAFAFAF);
 Color greyColorInfo = Color(0xFFF7F7F7);
 Color dividerColor = Color(0xFF6B6B6B);
+Color borderColorRecentBook = Color(0xFFF3F3F3);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
