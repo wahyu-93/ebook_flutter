@@ -1,4 +1,6 @@
+import 'package:ebook_app/models/book_list.dart';
 import 'package:ebook_app/screens/home/components/recent_book.dart';
+import 'package:ebook_app/screens/home/components/trending_book.dart';
 import 'package:ebook_app/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -117,6 +119,17 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    Widget trendingBook() {
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 30),
+        child: Row(
+          children:
+              bookLists.asMap().entries.map((MapEntry map) => TrendingBook(bookList: bookLists[map.key])).toList(),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: ListView(
@@ -144,6 +157,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           listCategories(),
+          Padding(
+            padding: EdgeInsets.only(left: 30, top: 30),
+            child: Text('Trendign Now', style: semiBoldText16.copyWith(color: blackColor)),
+          ),
+          trendingBook(),
+          SizedBox(height: 30),
         ],
       ),
     );
