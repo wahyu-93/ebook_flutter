@@ -5,6 +5,8 @@ import 'package:ebook_app/themes.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  static const nameRoute = '/homePage';
+
   const HomePage({super.key});
 
   @override
